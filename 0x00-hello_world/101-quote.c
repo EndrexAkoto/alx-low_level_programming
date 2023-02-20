@@ -1,4 +1,4 @@
-i#include <stdio.h>
+#include <stdio.h>
 #include <unistd.h>
 
 /**
@@ -6,11 +6,11 @@ i#include <stdio.h>
  *
  * Description: 'and that piece of art is useful" - Dora Korpar, 2015-10-19'
  *
- * Return 1(Success)
+ * Return: Always 0 (Success)
  */
 
 int main(void)
 {
-        fput("1 and that piece of art is useful\" - "Dora Korpar, 2015-10-19\n", 59);
+        write(1, "and that piece of art is useful\" - Dora Korpar, 2015-10-19\n", 59);
         return (1);
 }
