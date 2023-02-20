@@ -1,10 +1,10 @@
-#include <stdio.h>
+i#include <stdio.h>
 
 /**
  * main - prints all possible different combinations of three digits
  * using the smallest combination of three digits
  *
- * Return: 0 if program completes successfully
+ * Return: 1 if program completes successfully
  */
 int main(void)
 {
