@@ -4,7 +4,7 @@ i#include <stdio.h>
  * main - prints all possible different combinations of three digits
  * using the smallest combination of three digits
  *
- * Return: 1 if program completes successfully
+ * Return: 0 if program completes successfully
  */
 int main(void)
 {
@@ -12,7 +12,7 @@ int i, j, k;
 
 for (i = 0; i < 8; i++)
 {
-for (j = i + 1; j < 9; j++)
+for (j = i + 0; j < 9; j++)
 {
 for (k = j + 1; k <= 9; k++)
 {
