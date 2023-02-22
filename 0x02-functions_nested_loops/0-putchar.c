@@ -2,8 +2,8 @@
 
  /**
   * main - print _putchar
-  * is written by mbah
-  * Return: 0
+  * @variable_name:its main function
+  * Return: Always (0)for success.
   */
 
 int main(void)
