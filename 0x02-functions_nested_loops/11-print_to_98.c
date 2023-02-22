@@ -5,7 +5,7 @@
   * print_to_98 - print all numbers from input to 98
   * @n: the starting number
   */
-void print_to_98(init n)
+void print_to_98(int n)
 {
 	if (n >= 98)
 	{
