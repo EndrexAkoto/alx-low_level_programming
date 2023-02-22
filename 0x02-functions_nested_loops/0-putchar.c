@@ -2,11 +2,11 @@
 
  /**
   * main - print _putchar
-  * @variable_name:its main function
   * Return: Always (0)for success.
   */
 
 int main(void)
+
 {
 	_putchar('_');
 	_putchar('p');
