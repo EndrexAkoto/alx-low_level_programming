@@ -1,68 +1,135 @@
-#include <stdio.h>
+#include "main.h"
 #include <stdlib.h>
-#include <ctype.h>
-#include <string.h>
+#include <stdio.h>
 
-int is_valid_number(char *number) {
-    for (int i = 0; i < strlen(number); i++) {
-        if (!isdigit(number[i])) {
-            return 0;
-        }
-    }
-    return 1;
+/**
+ * _memset - fills memory with a constant byte
+ *
+ * @s: input pointer that represents memory block
+ *     to fill
+ * @b: characters to fill/set
+ * @n: number of bytes to be filled
+ *
+ * Return: pointer to the filled memory area
+*/
+
+char *_memset(char *s, char b, unsigned int n)
+{
+	unsigned int i = 0;
+
+	while (i < n)
+	{
+		s[i] = b;
+		i++;
+	}
+	return (s);
 }
 
-char *multiply(char *num1, char *num2) {
-    int len1 = strlen(num1);
-    int len2 = strlen(num2);
-    int len = len1 + len2;
-    int *result = calloc(len, sizeof(int));
-    char *output = calloc(len + 1, sizeof(char));
+/**
+ * _calloc - function that allocates memory
+ *           for an array using memset
+ *
+ * @nmemb: size of array
+ * @size: size of each element
+ *
+ * Return: pointer to new allocated memory
+*/
 
-    for (int i = len1 - 1; i >= 0; i--) {
-        for (int j = len2 - 1; j >= 0; j--) {
-            int product = (num1[i] - '0') * (num2[j] - '0');
-            int p1 = i + j;
-            int p2 = i + j + 1;
-            int sum = product + result[p2];
-            result[p1] += sum / 10;
-            result[p2] = sum % 10;
-        }
-    }
+void *_calloc(unsigned int nmemb, unsigned int size)
+{
+	char *ptr;
 
-    int k = 0;
-    while (k < len && result[k] == 0) {
-        k++;
-    }
+	if (nmemb == 0 || size == 0)
+		return (NULL);
+	ptr = malloc(nmemb * size);
+	if (ptr == NULL)
+		return (NULL);
+	_memset(ptr, 0, nmemb * size);
 
-    for (int i = k; i < len; i++) {
-        output[i - k] = result[i] + '0';
-    }
-
-    if (strlen(output) == 0) {
-        output[0] = '0';
-        output[1] = '\0';
-    }
-
-    free(result);
-
-    return output;
+	return (ptr);
 }
 
-int main(int argc, char *argv[]) {
-    if (argc != 3 || !is_valid_number(argv[1]) || !is_valid_number(argv[2])) {
-        printf("Error\n");
-        return 98;
-    }
 
-    char *num1 = argv[1];
-    char *num2 = argv[2];
-    char *result = multiply(num1, num2);
+/**
+ * multiply - initialize array with 0 byte
+ *
+ * @s1: string 1
+ * @s2: string 2
+ *
+ * Return: nothing
+*/
 
-    printf("%s\n", result);
+void multiply(char *s1, char *s2)
+{
+	int i, l1, l2, total_l, f_digit, s_digit, res = 0, tmp;
+	char *ptr;
+	void *temp;
 
-    free(result);
+	l1 = _length(s1);
+	l2 = _length(s2);
+	tmp = l2;
+	total_l = l1 + l2;
+	ptr = _calloc(sizeof(int), total_l);
 
-    return 0;
+	/* store our pointer address to free later */
+	temp = ptr;
+
+	for (l1--; l1 >= 0; l1--)
+	{
+		f_digit = s1[l1] - '0';
+		res = 0;
+		l2 = tmp;
+		for (l2--; l2 >= 0; l2--)
+		{
+			s_digit = s2[l2] - '0';
+			res += ptr[l2 + l1 + 1] + (f_digit * s_digit);
+			ptr[l1 + l2 + 1] = res % 10;
+			res /= 10;
+		}
+		if (res)
+			ptr[l1 + l2 + 1] = res % 10;
+	}
+
+	while (*ptr == 0)
+	{
+		ptr++;
+		total_l--;
+	}
+
+	for (i = 0; i < total_l; i++)
+		printf("%i", ptr[i]);
+	printf("\n");
+	free(temp);
+}
+
+
+/**
+ * main - Entry point
+ *
+ * Description: a program that multiplies
+ *            two positive numbers
+ *
+ * @argc: number of arguments
+ * @argv: arguments array
+ *
+ * Return: 0 on success 98 on faliure
+*/
+
+int main(int argc, char *argv[])
+{
+	char *n1 = argv[1];
+	char *n2 = argv[2];
+
+	if (argc != 3 || check_number(n1) || check_number(n2))
+		error_exit();
+
+	if (*n1 == '0' || *n2 == '0')
+	{
+		_putchar('0');
+		_putchar('\n');
+	}
+	else
+		multiply(n1, n2);
+	return (0);
 }
 
