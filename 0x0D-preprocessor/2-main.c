@@ -1,11 +1,12 @@
+/* A program that printsthe name of the file comiled from*/
 #include <stdio.h>
 
 /**
- * main - prints the name of the file
+ * main - Entry point of the program
  *
- * Return: Always 0 (Success)
+ * Return: 0
  */
-int ain(void)
+int main(void)
 {
 	printf("%s\n", __FILE__);
 	return (0);
