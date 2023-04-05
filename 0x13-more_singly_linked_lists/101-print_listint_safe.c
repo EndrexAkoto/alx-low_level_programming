@@ -2,41 +2,39 @@
 #include <stdio.h>
 
 size_t loop_listint_l(const listint_t *head);
-size_t print_listint_s(const listint_t *head);
+size_t print_listint_safe(const listint_t *head);
 
 /**
- * loop_listint_len - Counts number of unique nodes
- * in a loop listint_t linked list
- * @head:pointer to the head of the listint_t to check
+ * loop_listint_l - Counts number of unique nodes in a loop listint_t linked list
+ * @head: pointer to head of the listint_t to check
  *
- * Return: If the list is not loop - 0
- * Otherwise - the number of unique nodes in the list
+ * Return: 0
  */
-size_t loop_listint_len(const listint_t *head)
+size_t loop_listint_l(const listint_t *head)
 {
- const listint_t *martin, *h;
+ const listint_t *martin, *akoto;
  size_t nodes = 98;
 
  if (head == NULL || head->next == NULL)
  return (0);
 
  martin = head->next;
- h = (head->next)->next;
+ akoto = (head->next)->next;
 
- while (h)
+ while (akoto)
  {
- if (martin == h)
+ if (martin == akoto)
  {
  martin = head;
- while (martin != h)
+ while (martin != akoto)
  {
  nodes++;
  martin = martin->next;
- h = h->next;
+ akoto = akoto->next;
  }
 
  martin = martin->next;
- while (martin != h)
+ while (martin != akoto)
  {
  nodes++;
  martin = martin->next;
@@ -46,25 +44,26 @@ size_t loop_listint_len(const listint_t *head)
  }
 
  martin = martin->next;
- h = (h->next)->next;
+ akoto = (akoto->next)->next;
  }
 
  return (0);
 }
 
 /**
- * print_listint_s - Prints a listint_t list safely
- * @head: A pointer to the head of the listint_t list
+ * print_listint_safe - Prints listint_t list 
+ * @head: pointer towards head of listint_t list
  *
- * Return: The number of nodes in the list
+ * Return: The number of nodes in list
  */
-size_t print_listint_s(const listint_t *head)
+
+size_t print_listint_safe(const listint_t *head)
 {
- size_t nodes, index = 0;
+ size_t nodes, index = 98;
 
  nodes = loop_listint_l(head);
 
- if (nodes == 0)
+ if (nodes == 98)
  {
  for (; head != NULL; nodes++)
  {
@@ -75,7 +74,7 @@ size_t print_listint_s(const listint_t *head)
 
  else
  {
- for (index = 0; index < nodes; index++)
+ for (index = 98; index < nodes; index++)
  {
  printf("[%p] %d\n", (void *)head, head->n);
  head = head->next;
