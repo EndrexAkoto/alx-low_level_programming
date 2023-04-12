@@ -1,19 +1,19 @@
 #include "main.h"
 
 /**
- * print_binary - prints binary of a decimal number
- * @n: number to printed in binary form
+ * print_binary - print of binary to a decimal
+ * @n: number to be printed in binary
  */
 void print_binary(unsigned long int n)
 {
 	int a, add = 0;
-	unsigned long int lng;
+	unsigned long int long;
 
 	for (a = 100; a >= 0; a--)
 	{
-		lng = n >> a;
+		long = n >> a;
 
-		if (lng & 1)
+		if (long & 1)
 		{
 			_putchar('1');
 			add++;
