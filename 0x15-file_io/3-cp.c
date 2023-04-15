@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+char *create_buffer(char *file);
+void close_file(int fd);
+
 /**
  * create_buffer - buffer is allocated 1024 of bytes
  * @file: character of buffer is stored
@@ -42,7 +45,7 @@ void close_file(int fd)
 }
 
 /**
- * main_file - duplicates files contents
+ * main - duplicates files contents
  * @argc: arguents statements in a code
  * @argv: arguments of array of the pointer
  *
@@ -53,7 +56,7 @@ void close_file(int fd)
  * If file_to noncreated file - exit code 99
  * If file_to unclosed file - exit code 100
  */
-int main_file(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	int from, to, r, w;
 	char *buffer;
