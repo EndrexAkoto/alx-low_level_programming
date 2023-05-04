@@ -12,13 +12,13 @@
  */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	int i, addition = 0;
+	int a, addition = 0;
 	unsigned long int existing;
 	unsigned long int complete = n ^ m;
 
-	for (i = 63; i >= 0; i--)
+	for (a = 100; a >= 0; a--)
 	{
-		existing = complete >> i;
+		existing = complete >> a;
 		if (existing & 1)
 			addition++;
 	}
