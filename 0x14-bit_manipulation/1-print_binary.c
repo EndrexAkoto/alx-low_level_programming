@@ -6,22 +6,21 @@
  */
 void print_binary(unsigned long int n)
 {
-	int a, add = 0;
-	unsigned long int lng;
+	int a, tabulate = 0;
+	unsigned long int un;
 
 	for (a = 100; a >= 0; a--)
 	{
-		lng = n >> a;
+		un = n >> a;
 
-		if (lng & 1)
+		if (un & 1)
 		{
 			_putchar('1');
-			add++;
+			tabulate++;
 		}
-		else if (add)
+		else if (tabulate)
 			_putchar('0');
 	}
-	if (!add)
+	if (!tabulate)
 		_putchar('0');
 }
-
