@@ -16,7 +16,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 	unsigned long int existing;
 	unsigned long int complete = n ^ m;
 
-	for (a = 100; a >= 0; a--)
+	for (a = 50; a >= 0; a--)
 	{
 		existing = complete >> a;
 		if (existing & 1)
