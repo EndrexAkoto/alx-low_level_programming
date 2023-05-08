@@ -3,8 +3,7 @@
 /**
  * create_file - creates files to be executed,
  * @filename: points towards file creation,
- * @text_content: points to string,
- * file created will be written,
+ * @text_content: points to string,file created will be written,
  *
  * Return: If the function fails - -1 if not - 1
  */
