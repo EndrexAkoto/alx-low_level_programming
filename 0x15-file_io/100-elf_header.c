@@ -180,7 +180,7 @@ void print_osabi(unsigned char *e_ident)
  * print_abi - Prints header
  * @e_ident: Array pointer
  */
-void print_abi(unsigned char *e_ident);
+void print_abi(unsigned char *e_ident)
 {
 	printf(" ABI Version: %d\n", e_ident[EI_ABIVERSION]);
 }
@@ -304,5 +304,6 @@ r = read(o, header, sizeof(Elf64_Ehdr));
 
 	free(header);
 	close_elf(o);
+
 	return (0);
 }
