@@ -180,10 +180,9 @@ void print_osabi(unsigned char *e_ident)
  * print_abi - Prints header
  * @e_ident: Array pointer
  */
-void print_abi(unsigned char *e_ident)
+void print_abi(unsigned char *e_ident);
 {
-	printf(" ABI Version: %d\n",
-		e_ident[EI_ABIVERSION]);
+	printf(" ABI Version: %d\n", e_ident[EI_ABIVERSION]);
 }
 
 /**
@@ -283,8 +282,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		close_elf(o);
 		dprintf(STDERR_FILENO, "Error: Can't read file %s\n", argv[1]);
 		exit(98);
-	}
-	r = read(o, header, sizeof(Elf64_Ehdr));
+r = read(o, header, sizeof(Elf64_Ehdr));
 	if (r == -1)
 	{
 		free(header);
