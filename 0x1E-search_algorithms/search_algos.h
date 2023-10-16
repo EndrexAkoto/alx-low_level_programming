@@ -21,6 +21,20 @@ typedef struct listint_s
 	struct listint_s *next;
 } listint_t;
 
+/**
+ * struct skiplist_s - skip list data structure
+ * @n: Integer,
+ * @express: array of pointers,
+ * @next: pointer to the next node,
+ *
+ * Description: skip list node
+ */
+typedef struct skiplist_s
+{
+	int n;
+	struct skiplist_s **express;
+	struct skiplist_s *next;
+} skiplist_t;
 
 int linear_search(int *array, size_t size, int value);
 int binary_search(int *array, size_t size, int value);
